@@ -213,4 +213,4 @@ This project was developed as part of a Python programming course project:
 
 https://github.com/Code-Maven/wis-python-course-2026-03
 
-The project combines biochemical modeling and Python-based simulation to investigate how competition for an inhibitor can affect enzyme activity.ling and Python-based simulation to investigate how competition for an inhibitor can affect enzyme activity.
+The project combines biochemical modeling and Python-based simulation to investigate how competition for an inhibitor can affect enzyme activity.
