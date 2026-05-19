@@ -76,107 +76,139 @@ For each concentration of E2, the program calculates how much inhibitor is free 
 ```
 ## Input
 
-The program expects numerical input from the user.
+The program expects numerical input from the user.  
+All concentrations should be given in the same units, for example nM.
 
 The required input values are:
 
-K1
-Total concentration of E1
-Total concentration of inhibitor
-Minimum E2 concentration
-Maximum E2 concentration
-One or more K2 values
+- `K1`: dissociation constant between enzyme 1 and the inhibitor
+- `E1_total`: total concentration of enzyme 1
+- `Inhibitor_total`: total concentration of inhibitor
+- `E2_min`: minimum concentration of enzyme 2 to test
+- `E2_max`: maximum concentration of enzyme 2 to test
+- `K2_values`: one or more dissociation constants between enzyme 2 and the inhibitor
 
 Optional input:
 
-Target activity percentage
+- `Target_activity`: selected activity percentage, for example 80%
 
-Example:
+Example input:
 
+```text
 K1 = 10 nM
-E1 total concentration = 100 nM
-Inhibitor total concentration = 80 nM
+E1_total = 100 nM
+Inhibitor_total = 80 nM
 E2 concentration range = 0-500 nM
 K2 values = 5, 10, 50, 100 nM
 Target activity = 80%
-
-All concentrations should be given in the same units, for example nM.
+```
 
 ## Output
 
 The tool generates calculated values and a graph.
 
-For each tested E2 concentration, the program calculates:
+For each tested `E2` concentration, the program calculates:
 
-Free inhibitor concentration
-Amount of inhibitor bound to E1
-Amount of inhibitor bound to E2
-Predicted activity of E1
+- `I_free`: free inhibitor concentration
+- `E1_bound`: amount of inhibitor bound to enzyme 1
+- `E2_bound`: amount of inhibitor bound to enzyme 2
+- `E1_activity_percent`: predicted remaining activity of enzyme 1
 
 Example output table:
 
+```csv
 E2_total,K2,I_free,E1_bound,E2_bound,E1_activity_percent
 0,10,5.2,34.2,0,65.8
 50,10,4.1,29.1,14.5,70.9
 100,10,3.3,24.8,24.8,75.2
+```
 
-The program generates a plot of enzyme 1 activity as a function of enzyme 2 concentration.
+The program also generates a plot of enzyme 1 activity as a function of enzyme 2 concentration.
 
-The graph includes:
+In the graph:
 
-x-axis: E2 concentration
-y-axis: E1 activity percentage
+- The x-axis shows the total concentration of `E2`
+- The y-axis shows the predicted activity of `E1` in percent
 
-If several K2 values are entered, the program plots several curves on the same graph. Each curve represents a different binding strength of enzyme 2.
+If several `K2` values are entered, the program plots several curves on the same graph. Each curve represents a different binding strength of enzyme 2 to the inhibitor.
 
-The program can also mark the concentration of E2 needed to reach a selected target activity, such as 80%.
+The program can also mark the concentration of `E2` needed to reach a selected target activity, such as 80%.
 
 ## Limitations
 
 This project uses a simplified biochemical model.
 
-The model assumes that both enzymes bind the same inhibitor, binding reaches equilibrium, the inhibitor binds independently to each enzyme, E1 activity depends only on whether E1 is bound to inhibitor, and all concentrations are given in the same units.
+The model assumes that:
 
-The model does not include complex biological effects such as cooperativity, irreversible inhibition, enzyme degradation, or full enzyme kinetics.
+- Both enzymes bind the same inhibitor
+- Binding reaches equilibrium
+- The inhibitor binds independently to each enzyme
+- Enzyme 1 activity depends only on whether enzyme 1 is bound to inhibitor
+- All concentrations are given in the same units
 
-Therefore, the project is intended as a simple simulation and visualization tool rather than a complete description of a real biological system.
+The model does not include more complex biological effects such as cooperativity, irreversible inhibition, enzyme degradation, or full enzyme kinetics.
+
+Therefore, this project is intended as a simple simulation and visualization tool, not as a complete description of a real biological system.
 
 ## Installation
 
 Clone the repository:
 
+```bash
 git clone <repository-link>
-cd Enzyme-Inhibitor-Competition-Simulator
+cd EnzymeInhibitorCompetitionSimulator
+```
 
-Install dependencies:
+Install the required dependencies:
 
+```bash
 pip install -r requirements.txt
-How to Run
+```
+
+## Running the Program
 
 Run the main script:
 
+```bash
 python main.py
+```
 
 The program will ask the user to enter the required parameters.
 
 Example:
 
-Enter K1: 10
-Enter E1 total concentration: 100
-Enter inhibitor total concentration: 80
-Enter minimum E2 concentration: 0
-Enter maximum E2 concentration: 500
+```text
+Enter K1 in nM: 10
+Enter total E1 concentration in nM: 100
+Enter total inhibitor concentration in nM: 80
+Enter minimum E2 concentration in nM: 0
+Enter maximum E2 concentration in nM: 500
 Enter K2 values separated by commas: 5,10,50,100
 Enter target activity percentage: 80
-How to Run Tests
+```
+
+After running, the program will calculate the results and generate the output graph.
+
+## Running Tests
 
 Run:
 
+```bash
 pytest
+```
+
+The tests will check that:
+
+- The calculated activity is between 0 and 100 percent
+- Negative concentrations are not accepted
+- The inhibitor mass balance is reasonable
+- Multiple `K2` values can be processed
+- Increasing `E2` affects the amount of inhibitor bound to `E1`
+
 ## Course Information
 
 This project was developed as part of a Python programming course project:
 
 https://github.com/Code-Maven/wis-python-course-2026-03
 
-The project combines biochemical modeling and Python-based simulation to investigate how competition for an inhibitor can affect enzyme activity.
+The project combines biochemical modeling and Python-based simulation to investigate how competition for an inhibitor can affect enzyme activity.ling and Python-based simulation to investigate how competition for an inhibitor can affect enzyme activity.
