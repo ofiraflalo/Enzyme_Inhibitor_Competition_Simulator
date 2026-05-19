@@ -73,7 +73,7 @@ The activity of enzyme 1 is calculated as the fraction of E1 that is not bound t
 
 Activity (%) = 100 * (1 - E1_bound / E1_total)
 For each concentration of E2, the program calculates how much inhibitor is free and how much inhibitor is bound to each enzyme.
-
+```
 ## Input
 
 The program expects numerical input from the user.
