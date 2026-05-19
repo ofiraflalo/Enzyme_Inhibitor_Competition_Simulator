@@ -132,6 +132,8 @@ Example output table:
 | 0        | 10 | 5.2    | 34.2     | 0        | 65.8                |
 | 50       | 10 | 4.1    | 29.1     | 14.5     | 70.9                |
 | 100      | 10 | 3.3    | 24.8     | 24.8     | 75.2                |
+
+
 The program also generates a plot of enzyme 1 activity as a function of enzyme 2 concentration.
 
 In the graph:
