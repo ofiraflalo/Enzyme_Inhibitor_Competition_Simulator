@@ -167,7 +167,7 @@ Clone the repository:
 
 ```bash
 git clone <repository-link>
-cd EnzymeInhibitorCompetitionSimulator
+cd Enzyme_Inhibitor_Competition_Simulator
 ```
 
 Install the required dependencies:
